@@ -1441,7 +1441,7 @@
                                 <li>Friday: Product update or behind-the-scenes</li>
                             </ul>
                         `,
-                        prompt: 'What's a compelling LinkedIn post idea that showcases Akiba's value without being salesy?',
+                        prompt: `What's a compelling LinkedIn post idea that showcases Akiba's value without being salesy?`,
                         quickOptions: [
                             "Share a graph: 'This Week in SME Credit' - weekly data snapshot that people look forward to",
                             "Customer spotlight: 'How [Company] approved 40% more loans without increasing risk'",
@@ -1470,7 +1470,7 @@
                             <p>Current materials are feature lists. New materials tell stories, show outcomes, 
                             and make the value impossible to ignore.</p>
                         `,
-                        prompt: 'What's the most compelling proof point to include in sales materials?',
+                        prompt: `What's the most compelling proof point to include in sales materials?`,
                         quickOptions: [
                             "ROI calculator: 'See how much revenue you're leaving on the table by rejecting creditworthy applicants'",
                             "Before/After: 'Traditional scoring vs Akiba scoring - same portfolio, different outcomes'",
@@ -1510,7 +1510,7 @@
                             <p>Set up a simple dashboard. Review with the team monthly. Adjust tactics based 
                             on what\'s working.</p>
                         `,
-                        prompt: 'Which metric would be most valuable to track for Akiba's brand success?',
+                        prompt: `Which metric would be most valuable to track for Akiba's brand success?`,
                         quickOptions: [
                             "Brand search volume: How many people search 'Akiba Digital' each month?",
                             "Share of voice: What % of alternative credit conversations mention Akiba?",
@@ -1648,7 +1648,7 @@
                             </div>
                         </div>
                         <div class="story-content">
-                            ${activity.content?.story || activity.story || \'\'}
+                            ${(activity.content && activity.content.story) || activity.story || ''}
                         </div>
                     </div>
                 `;
@@ -1873,7 +1873,7 @@
             const totalActivities = workshopPhases.reduce((sum, phase) => 
                 sum + phase.activities.filter(a => ['exercise', 'campaign', 'tactical'].includes(a.type)).length, 0);
             const completed = appState.completedActivities.size;
-            const totalIdeas = Object.values(appState.workshopData).reduce((sum, data) => sum + (data.ideas?.length || 0), 0);
+            const totalIdeas = Object.values(appState.workshopData).reduce((sum, data) => sum + (((data.ideas && data.ideas.length) || 0)), 0);
             
             const progress = Math.round((completed / totalActivities) * 100);
             
@@ -1926,7 +1926,7 @@
                 completedAt: new Date().toISOString(),
                 progress: {
                     completed: appState.completedActivities.size,
-                    totalIdeas: Object.values(appState.workshopData).reduce((sum, data) => sum + (data.ideas?.length || 0), 0)
+                    totalIdeas: Object.values(appState.workshopData).reduce((sum, data) => sum + (((data.ideas && data.ideas.length) || 0)), 0)
                 },
                 workshopResults: appState.workshopData
             };
