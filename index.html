@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akiba Digital Brand Workshop - Complete Journey 🚀</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background: #f8fafc;
+        }
+        
+        /* Akiba Brand Colors */
+        :root {
+            --akiba-primary: #00A86B;
+            --akiba-secondary: #0D1B2A;
+            --akiba-accent: #1B998B;
+            --akiba-light: #E8F5F1;
+            --akiba-dark: #1a1a1a;
+            --akiba-gray: #64748b;
+            --akiba-border: #e2e8f0;
+            --akiba-warning: #f59e0b;
+            --akiba-success: #10b981;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--akiba-primary) 0%, var(--akiba-accent) 50%, var(--akiba-secondary) 100%);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Welcome Screen */
+        .welcome-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--akiba-primary) 0%, var(--akiba-accent) 50%, var(--akiba-secondary) 100%);
+            padding: 20px;
+        }
+        
+        .welcome-card {
+            background: white;
+            border-radius: 24px;
+            padding: 60px 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .welcome-icon {
+            font-size: 72px;
+            margin-bottom: 24px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .akiba-logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--akiba-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .welcome-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--akiba-secondary);
+            margin-bottom: 16px;
+        }
+        
+        .welcome-subtitle {
+            font-size: 18px;
+            color: var(--akiba-gray);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .journey-preview {
+            background: var(--akiba-light);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        
+        .journey-preview h3 {
+            color: var(--akiba-secondary);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        
+        .journey-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+        
+        .phase-badge {
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--akiba-secondary);
+            border: 2px solid var(--akiba-border);
+        }
+        
+        .phase-badge .emoji {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--akiba-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 18px;
+            border: 2px solid var(--akiba-border);
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-input:focus {
+            border-color: var(--akiba-primary);
+            box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--akiba-primary) 0%, var(--akiba-accent) 100%);
+            color: white;
+            padding: 16px 48px;
+            font-size: 20px;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 168, 107, 0.3);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Main App */
+        .main-app {
+            display: none;
+        }
+        
+        .main-app.active {
+            display: block;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--akiba-primary) 0%, var(--akiba-accent) 50%, var(--akiba-secondary) 100%);
+            color: white;
+            padding: 24px 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: 800;
+        }
+        
+        .header-stats {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .stat-box {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .progress-label {
+            font-size: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            height: 8px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: white;
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 8px;
+        }
+        
+        /* Phase Navigation */
+        .phase-nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        
+        .phase-tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: none;
+        }
+        
+        .phase-tab:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .phase-tab.active {
+            background: white;
+            color: var(--akiba-primary);
+        }
+        
+        .phase-tab.completed {
+            background: rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 32px 0;
+        }
+        
+        /* Story Section */
+        .story-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 24px;
+            border-left: 6px solid var(--akiba-primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .story-icon {
+            font-size: 48px;
+        }
+        
+        .story-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--akiba-secondary);
+        }
+        
+        .story-subtitle {
+            font-size: 18px;
+            color: var(--akiba-gray);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        .story-content {
+            background: var(--akiba-light);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .story-content h4 {
+            color: var(--akiba-secondary);
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        
+        .story-content p {
+            color: var(--akiba-dark);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .story-content ul {
+            margin-left: 24px;
+            color: var(--akiba-dark);
+        }
+        
+        .story-content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        /* Activity Section */
+        .activity-section {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 2px solid var(--akiba-border);
+        }
+        
+        .activity-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--akiba-light);
+            padding-bottom: 16px;
+        }
+        
+        .activity-meta {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--akiba-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .activity-timing {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--akiba-gray);
+        }
+        
+        .timing-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--akiba-light);
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+        
+        .activity-status {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-badge.not-started {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+        
+        .status-badge.in-progress {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-badge.completed {
+            background: #d1fae5;
+            color: #059669;
+        }
+        
+        /* Exercise Cards */
+        .exercise-card {
+            background: #f9fafb;
+            border: 2px solid var(--akiba-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .exercise-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--akiba-secondary);
+        }
+        
+        .exercise-time {
+            background: var(--akiba-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .exercise-description {
+            color: var(--akiba-dark);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .exercise-steps {
+            background: white;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+        
+        .exercise-steps h5 {
+            color: var(--akiba-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .exercise-steps ol {
+            margin-left: 20px;
+        }
+        
+        .exercise-steps li {
+            color: var(--akiba-dark);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* Interactive Input Section */
+        .input-section {
+            background: white;
+            border: 2px solid var(--akiba-primary);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 16px;
+        }
+        
+        .input-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--akiba-secondary);
+            margin-bottom: 12px;
+        }
+        
+        .quick-options {
+            margin-bottom: 16px;
+        }
+        
+        .quick-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--akiba-border);
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s;
+            background: white;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+        
+        .quick-select:focus {
+            border-color: var(--akiba-primary);
+            box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1);
+        }
+        
+        .idea-textarea {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--akiba-border);
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .idea-textarea:focus {
+            border-color: var(--akiba-primary);
+            box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1);
+        }
+        
+        .btn-add {
+            background: linear-gradient(135deg, var(--akiba-primary) 0%, var(--akiba-accent) 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-add:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 168, 107, 0.3);
+        }
+        
+        .btn-add:disabled {
+            background: var(--akiba-gray);
+            cursor: not-allowed;
+        }
+        
+        .btn-complete {
+            background: var(--akiba-success);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+        
+        /* Ideas Display */
+        .ideas-display {
+            margin-top: 24px;
+        }
+        
+        .ideas-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--akiba-secondary);
+            margin-bottom: 16px;
+        }
+        
+        .idea-card {
+            background: white;
+            border: 2px solid var(--akiba-light);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+        
+        .idea-card:hover {
+            border-color: var(--akiba-accent);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .idea-content-display {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .vote-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 50px;
+        }
+        
+        .vote-btn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--akiba-primary) 0%, var(--akiba-accent) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .vote-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .vote-count {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--akiba-secondary);
+            margin-top: 6px;
+        }
+        
+        .idea-text-display {
+            flex: 1;
+        }
+        
+        .idea-text {
+            color: var(--akiba-dark);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .idea-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--akiba-gray);
+        }
+        
+        .author {
+            font-weight: 600;
+            color: var(--akiba-primary);
+        }
+        
+        /* Success Metrics */
+        .success-metrics {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        
+        .success-metrics h4 {
+            color: var(--akiba-secondary);
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .metrics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        
+        .metric-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--akiba-dark);
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 2px solid var(--akiba-border);
+        }
+        
+        .btn-nav {
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid var(--akiba-primary);
+        }
+        
+        .btn-prev {
+            background: white;
+            color: var(--akiba-primary);
+        }
+        
+        .btn-next {
+            background: var(--akiba-primary);
+            color: white;
+        }
+        
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-nav:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--akiba-secondary);
+            color: white;
+            text-align: center;
+            padding: 24px 20px;
+            margin-top: 48px;
+        }
+        
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        /* Export Panel */
+        .export-panel {
+            background: white;
+            border: 2px solid var(--akiba-primary);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        
+        .export-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--akiba-secondary);
+            margin-bottom: 12px;
+        }
+        
+        .export-description {
+            color: var(--akiba-gray);
+            margin-bottom: 20px;
+        }
+        
+        .btn-export {
+            background: var(--akiba-primary);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 20px;
+            }
+            
+            .story-title {
+                font-size: 24px;
+            }
+            
+            .activity-header {
+                flex-direction: column;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .btn-nav {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-card">
+            <div class="welcome-icon">🚀</div>
+            <div class="akiba-logo">AKIBA DIGITAL</div>
+            <h1 class="welcome-title">Brand Building Journey</h1>
+            <p class="welcome-subtitle">
+                A comprehensive, interactive workshop to build Akiba's brand foundation 
+                and create a powerful market activation strategy
+            </p>
+            
+            <div class="journey-preview">
+                <h3>📋 Your Complete Journey:</h3>
+                <div class="journey-phases">
+                    <div class="phase-badge">
+                        <span class="emoji">📖</span>
+                        Foundation
+                    </div>
+                    <div class="phase-badge">
+                        <span class="emoji">🎯</span>
+                        Strategy
+                    </div>
+                    <div class="phase-badge">
+                        <span class="emoji">🚀</span>
+                        Activation
+                    </div>
+                    <div class="phase-badge">
+                        <span class="emoji">📊</span>
+                        Measurement
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">What's your name? 👋</label>
+                <input 
+                    type="text" 
+                    id="userName" 
+                    class="form-input" 
+                    placeholder="Enter your name..."
+                    onkeypress="if(event.key==='Enter') startWorkshop()"
+                />
+            </div>
+            
+            <button class="btn-primary" onclick="startWorkshop()">
+                Start Your Journey 🎉
+            </button>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="main-app">
+        <!-- Header -->
+        <div class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div>
+                        <h1 class="header-title">AKIBA DIGITAL Brand Workshop</h1>
+                        <p style="font-size: 13px; opacity: 0.9;" id="welcomeText">Welcome! 👋</p>
+                    </div>
+                    <div class="header-stats">
+                        <div class="stat-box">
+                            <div class="stat-number" id="totalIdeas">0</div>
+                            <div class="stat-label">Ideas</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="completedActivities">0</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="progressPercent">0%</div>
+                            <div class="stat-label">Progress</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Workshop Progress</span>
+                        <span id="progressText">0 of 15 activities</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="phase-nav" id="phaseNav"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="container">
+                <div id="contentArea"></div>
+                
+                <!-- Navigation Buttons -->
+                <div class="nav-buttons">
+                    <button class="btn-nav btn-prev" id="btnPrev" onclick="navigatePrev()">
+                        ← Previous
+                    </button>
+                    <button class="btn-nav btn-next" id="btnNext" onclick="navigateNext()">
+                        Next →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-title">Building the Akiba Digital brand together 🚀</p>
+            <p style="font-size: 12px; opacity: 0.8; margin-top: 4px;">Smarter Risk Decisioning for Africa</p>
+        </div>
+    </div>
+
+    <script>
+        // App State
+        let appState = {
+            userName: '',
+            currentPhase: 0,
+            currentActivity: 0,
+            completedActivities: new Set(),
+            workshopData: {}
+        };
+
+        // Workshop Structure
+        const workshopPhases = [
+            {
+                id: 'intro',
+                name: 'Introduction',
+                icon: '🎯',
+                activities: [
+                    {
+                        id: 'welcome',
+                        title: 'Welcome & Overview',
+                        type: 'story',
+                        duration: '15 min',
+                        content: {
+                            story: `
+                                <h4>Welcome to Your Brand Building Journey!</h4>
+                                <p><strong>The Challenge:</strong> Akiba Digital has built sophisticated technology for risk decisioning 
+                                and financial inclusion. But our brand isn\'t strong enough in the market. We need better 
+                                recognition, clearer positioning, and a strategy to drive adoption.</p>
+                                
+                                <p><strong>The Goal:</strong> Over the next 2-3 hours, we\'ll work together to:</p>
+                                <ul>
+                                    <li>Define our brand foundation (story, values, positioning)</li>
+                                    <li>Craft our voice and visual identity</li>
+                                    <li>Generate bold activation ideas</li>
+                                    <li>Create a 90-day action plan</li>
+                                </ul>
+                                
+                                <p><strong>Your Role:</strong> Every idea matters. Be specific, be authentic, and think 
+                                about what will truly differentiate Akiba in the market.</p>
+                                
+                                <p><strong>How It Works:</strong> You\'ll see prompts and exercises for each section. 
+                                Use the quick-start options to spark ideas, or write your own from scratch. Vote on 
+                                the best ideas. The top-voted concepts will form our brand guidelines.</p>
+                            `
+                        }
+                    }
+                ]
+            },
+            {
+                id: 'foundation',
+                name: 'Brand Foundation',
+                icon: '📖',
+                activities: [
+                    {
+                        id: 'story',
+                        title: 'Brand Story',
+                        type: 'exercise',
+                        duration: '45 min',
+                        description: 'Craft the compelling narrative of why Akiba exists and the problem we solve.',
+                        prompt: 'What\'s the "aha moment" that created Akiba? What customer problem keeps you up at night?',
+                        exercises: [
+                            {
+                                name: 'The Founder\'s Journey',
+                                time: '15 min',
+                                steps: [
+                                    'Share the moment you realized traditional credit scoring was failing African SMEs',
+                                    'Describe the first customer problem that made you say "we need to fix this"',
+                                    'What made you believe alternative data could unlock financial inclusion?'
+                                ]
+                            },
+                            {
+                                name: 'Customer Pain Story',
+                                time: '15 min',
+                                steps: [
+                                    'Describe a specific SME that was rejected despite being creditworthy',
+                                    'What data did traditional systems miss about them?',
+                                    'How would Akiba change their story?'
+                                ]
+                            },
+                            {
+                                name: 'The Vision Arc',
+                                time: '15 min',
+                                steps: [
+                                    'Where we started: Financial exclusion in Africa',
+                                    'What we discovered: Traditional scoring excludes 70%+ of SMEs',
+                                    'What we built: Intelligence layer that sees what banks can\'t',
+                                    'Where we\'re going: Financial inclusion at scale'
+                                ]
+                            }
+                        ],
+                        quickOptions: [
+                            "Financial exclusion locks out 70% of African SMEs from credit, despite many being creditworthy",
+                            "Traditional credit bureaus miss the real story - they can't see cash flow, transaction patterns, or business momentum",
+                            "We saw thriving businesses rejected by banks because outdated scoring couldn't capture their true credit risk",
+                            "Lenders want to say 'yes' more often, but lack the data confidence to lend inclusively without increasing defaults",
+                            "Alternative data reveals creditworthiness that traditional systems ignore - this is the key to financial inclusion"
+                        ],
+                        successMetrics: 'One compelling 200-word brand story that connects emotionally'
+                    },
+                    {
+                        id: 'values',
+                        title: 'Core Values',
+                        type: 'exercise',
+                        duration: '30 min',
+                        description: 'Define the non-negotiable principles that guide every decision at Akiba.',
+                        prompt: 'What core values would you never compromise, even for profit?',
+                        exercises: [
+                            {
+                                name: 'Values Discovery',
+                                time: '30 min',
+                                steps: [
+                                    'Each person lists 3 values they see in Akiba\'s culture',
+                                    'Cluster similar themes together',
+                                    'Pressure-test each: "Would we sacrifice profit for this?"',
+                                    'Narrow to 3-4 core values',
+                                    'Write a one-sentence definition for each'
+                                ]
+                            }
+                        ],
+                        quickOptions: [
+                            "Data-Driven Fairness: We believe numbers tell better stories than bias - let data speak, not assumptions",
+                            "Inclusive Innovation: Building for the excluded majority, not the included minority",
+                            "Radical Transparency: Complex tech, simple trust - we explain what we do and why",
+                            "Customer Success First: We win when our clients win - their growth is our growth",
+                            "Relentless Pragmatism: Solutions over features - we build what works, not what's trendy"
+                        ],
+                        successMetrics: '3-4 core values with clear definitions'
+                    },
+                    {
+                        id: 'positioning',
+                        title: 'Market Positioning',
+                        type: 'exercise',
+                        duration: '45 min',
+                        description: 'Define exactly how Akiba is different and why it matters.',
+                        prompt: 'Complete this: "Unlike [competitors], Akiba helps [customers] to [unique benefit]"',
+                        exercises: [
+                            {
+                                name: 'Category Decision',
+                                time: '20 min',
+                                steps: [
+                                    'Are you: A credit bureau alternative? A risk decisioning platform? A data aggregation API? A financial inclusion enabler?',
+                                    'You can\'t be all. Pick ONE primary category',
+                                    'Write why this category matters most'
+                                ]
+                            },
+                            {
+                                name: 'XYZ Formula',
+                                time: '25 min',
+                                steps: [
+                                    'We are the [category] for [target audience]',
+                                    'Unlike [alternatives], we [unique approach]',
+                                    'So that [transformation] can happen',
+                                    'Test: Can you say this in one breath?'
+                                ]
+                            }
+                        ],
+                        quickOptions: [
+                            "Unlike traditional credit bureaus, Akiba helps African lenders see credit risk traditional scoring misses",
+                            "Unlike generic data platforms, Akiba helps fintechs lend inclusively without increasing defaults",
+                            "Unlike manual underwriting, Akiba helps lenders make faster, smarter decisions using alternative data",
+                            "We're the financial x-ray for African lenders - revealing creditworthiness hidden to traditional systems",
+                            "The risk decisioning engine that says 'yes' more often - turning alternative data into financial inclusion"
+                        ],
+                        successMetrics: 'One clear positioning statement everyone can remember'
+                    },
+                    {
+                        id: 'voice',
+                        title: 'Tone & Voice',
+                        type: 'exercise',
+                        duration: '30 min',
+                        description: 'Define how Akiba communicates - our personality in words.',
+                        prompt: 'If Akiba was a person at a party, how would they talk? What would they never say?',
+                        exercises: [
+                            {
+                                name: 'Voice Attributes',
+                                time: '15 min',
+                                steps: [
+                                    'Pick 3-4 attributes: Bold vs. Measured? Technical vs. Accessible? Provocative vs. Reassuring?',
+                                    'For each, write what we ARE and what we are NOT',
+                                    'Test with example phrases'
+                                ]
+                            },
+                            {
+                                name: 'Do\'s and Don\'ts',
+                                time: '15 min',
+                                steps: [
+                                    'Write 3 phrases we WOULD say',
+                                    'Write 3 phrases we would NEVER say',
+                                    'Why? What do these reveal about our brand personality?'
+                                ]
+                            }
+                        ],
+                        quickOptions: [
+                            "We ARE: Direct & confident | We are NOT: Arrogant or pushy",
+                            "We ARE: Data-obsessed | We are NOT: Jargon-heavy or overly technical",
+                            "We ARE: Challenger mindset | We are NOT: Disrespectful to incumbents",
+                            "We SAY: 'See credit risk others miss' | We DON'T SAY: 'Enterprise-grade solutions'",
+                            "We SAY: 'Lend to the 70% traditional scoring excludes' | We DON'T SAY: 'Cutting-edge technology'"
+                        ],
+                        successMetrics: 'Voice chart with 3-4 attributes and example phrases'
+                    },
+                    {
+                        id: 'visual',
+                        title: 'Visual Identity',
+                        type: 'exercise',
+                        duration: '30 min',
+                        description: 'Define how Akiba looks and feels - our visual language.',
+                        prompt: 'What colors, images, or feelings should people associate with Akiba?',
+                        exercises: [
+                            {
+                                name: 'Visual Audit',
+                                time: '15 min',
+                                steps: [
+                                    'Review: Current website, LinkedIn, presentations',
+                                    'What\'s consistent? What\'s missing?',
+                                    'Look at 3 competitors - how do we compare?'
+                                ]
+                            },
+                            {
+                                name: 'Mood Board',
+                                time: '15 min',
+                                steps: [
+                                    'What emotions should our brand evoke? (Trust? Innovation? Growth?)',
+                                    'What colors represent these feelings?',
+                                    'What imagery style? (Data viz? People? Abstract?)',
+                                    'Describe the "Akiba look" in one sentence'
+                                ]
+                            }
+                        ],
+                        quickOptions: [
+                            "Colors: Teal green (growth + trust) + Navy (stability + professional) + White (clarity)",
+                            "Modern, clean, data-driven visual language - professional but not corporate",
+                            "African-inspired without being cliché - authentic to our market",
+                            "Imagery: Data visualization, diverse businesses succeeding, financial inclusion in action",
+                            "Feeling: Intelligent yet accessible, powerful yet approachable, trustworthy yet innovative"
+                        ],
+                        successMetrics: 'Visual direction document with colors, imagery style, and brand feeling'
+                    }
+                ]
+            },
+            {
+                id: 'activation',
+                name: 'Brand Activation',
+                icon: '🚀',
+                activities: [
+                    {
+                        id: 'content-strategy',
+                        title: 'Founder-Led Content Sprint',
+                        type: 'campaign',
+                        duration: 'Weeks 2-6',
+                        description: 'Build personal credibility through thought leadership. B2B fintech trust = founder visibility.',
+                        story: `
+                            <h4>Why This Matters:</h4>
+                            <p>In B2B fintech, people buy from people they trust. Your founders - Tebogo and Kamogelo - 
+                            need to be visible, sharing insights, and building credibility in the market.</p>
+                            
+                            <h4>The Approach:</h4>
+                            <p>Weekly thought leadership on LinkedIn, focusing on the problems Akiba solves. 
+                            Not product promotion - genuine insights about financial inclusion, credit risk, and alternative data.</p>
+                            
+                            <h4>Content Topics:</h4>
+                            <ul>
+                                <li>Week 1: "Why Traditional Credit Scoring Fails 70% of African SMEs"</li>
+                                <li>Week 2: "The Alternative Data Revolution: What We\'re Learning"</li>
+                                <li>Week 3: "How to Build Inclusive Fintech Without Sacrificing Risk"</li>
+                                <li>Week 4: "The Real Cost of Financial Exclusion" (data story)</li>
+                            </ul>
+                        `,
+                        prompt: 'What bold content idea would establish Tebogo/Kamogelo as thought leaders in financial inclusion?',
+                        quickOptions: [
+                            "Monthly data report: 'State of SME Credit in South Africa' - become THE source for credit insights",
+                            "LinkedIn series: '10 Myths About African Credit Risk' - challenge conventional wisdom",
+                            "Video series: Founder interviews with customers about their credit journey",
+                            "Weekly 'Credit Risk Insight' - one data point that changes how lenders think",
+                            "Podcast: 'Financial Inclusion Unfiltered' - honest conversations with lenders and borrowers"
+                        ],
+                        successMetrics: '1,000+ impressions per article, 50+ engaged comments, 3+ qualified leads'
+                    },
+                    {
+                        id: 'social-proof',
+                        title: 'Customer Evidence Campaign',
+                        type: 'campaign',
+                        duration: 'Weeks 3-8',
+                        description: 'Build credibility through customer success stories and social proof.',
+                        story: `
+                            <h4>Why This Matters:</h4>
+                            <p>You need proof that Akiba works. Case studies, testimonials, and data-backed success 
+                            stories are your strongest sales assets.</p>
+                            
+                            <h4>The Approach:</h4>
+                            <p>Interview 3-5 customers. Document their journey: Problem → Solution → Results (with numbers). 
+                            Package these stories for maximum impact across multiple channels.</p>
+                            
+                            <h4>Deliverables:</h4>
+                            <ul>
+                                <li>3 written case studies (2-page PDFs)</li>
+                                <li>5 video testimonials (60-90 seconds each)</li>
+                                <li>10 pull quotes for social media</li>
+                                <li>Data stories: "How Akiba helped [Company] reduce defaults by X%"</li>
+                            </ul>
+                        `,
+                        prompt: 'Which customer success story would be most compelling to share?',
+                        quickOptions: [
+                            "Fintech that increased approval rates by 40% while maintaining same default rate",
+                            "Traditional lender that started serving SMEs they previously rejected - now their fastest-growing segment",
+                            "BNPL provider that cut onboarding time from 3 days to 3 hours using Akiba",
+                            "Microfinance institution that discovered 30% of rejected applicants were actually low-risk",
+                            "Agriculture lender that could finally serve farmers without traditional credit history"
+                        ],
+                        successMetrics: '3 published case studies, 5 video testimonials, featured in 2 industry publications'
+                    },
+                    {
+                        id: 'webinars',
+                        title: 'Category Creation Webinar Series',
+                        type: 'campaign',
+                        duration: 'Months 2-4',
+                        description: 'Own the conversation by educating the market. Become the authority on alternative credit.',
+                        story: `
+                            <h4>Why This Matters:</h4>
+                            <p>If you can educate the market, you can own the category. Webinars position Akiba 
+                            as the expert while generating qualified leads.</p>
+                            
+                            <h4>The Strategy:</h4>
+                            <p>Three webinars, each targeting different audience segments. Focus on education, not sales. 
+                            Bring in customers/partners to add credibility.</p>
+                            
+                            <h4>Webinar Topics:</h4>
+                            <ul>
+                                <li>Webinar 1: "Beyond Credit Bureaus: The Alternative Data Advantage"</li>
+                                <li>Webinar 2: "Digital Lending 2.0: Building Inclusive Portfolios"</li>
+                                <li>Webinar 3: "The Future of Risk Decisioning in Africa"</li>
+                            </ul>
+                        `,
+                        prompt: 'What webinar topic would attract your ideal customers and position Akiba as the category leader?',
+                        quickOptions: [
+                            "Live workshop: 'Building Your Alternative Credit Scoring Model' - hands-on, practical",
+                            "Panel: 'Financial Inclusion Lessons from 3 African Fintechs' - peer learning",
+                            "Demo + Q&A: 'See Credit Risk Traditional Systems Miss' - product-focused",
+                            "Fireside chat: 'The Regulator's View on Alternative Data' - address concerns",
+                            "Data showcase: 'What 1M Transactions Teach Us About SME Credit' - original research"
+                        ],
+                        successMetrics: '50+ registrations per webinar, 30% show rate, 5+ qualified leads each'
+                    },
+                    {
+                        id: 'partnerships',
+                        title: 'Strategic Partnership Activation',
+                        type: 'campaign',
+                        duration: 'Months 2-6',
+                        description: 'Leverage partners\' credibility and distribution to amplify reach.',
+                        story: `
+                            <h4>Why This Matters:</h4>
+                            <p>Partners give you instant credibility, broader reach, and access to their customer base. 
+                            The right partnerships multiply your marketing efforts.</p>
+                            
+                            <h4>Target Partners:</h4>
+                            <ul>
+                                <li>Core Banking Vendors (Temenos, Mambu, etc.)</li>
+                                <li>Payment Processors touching SME transactions</li>
+                                <li>Business Management Tools (accounting, POS)</li>
+                                <li>Fintech Accelerators & Associations</li>
+                            </ul>
+                            
+                            <h4>Partnership Playbook:</h4>
+                            <ul>
+                                <li>Co-marketing: Joint webinars, case studies, white papers</li>
+                                <li>Integration partnerships: "Powered by Akiba" badges</li>
+                                <li>Referral programs: Commission for qualified intros</li>
+                                <li>Event sponsorships: Piggyback on their events</li>
+                            </ul>
+                        `,
+                        prompt: 'Which partnership would give Akiba the most credibility and market access?',
+                        quickOptions: [
+                            "Partner with leading core banking vendor - integrate Akiba into their lending module",
+                            "Join fintech association as risk intelligence partner - speak at all their events",
+                            "Co-create research report with major accounting software on SME financial health",
+                            "Integrate with popular POS system - offer credit scoring to their merchant base",
+                            "Partner with regulator/development bank on financial inclusion initiative"
+                        ],
+                        successMetrics: '2-3 active partnerships, 10+ co-marketing touchpoints, 20+ qualified referrals'
+                    },
+                    {
+                        id: 'speaking',
+                        title: 'Industry Voice Strategy',
+                        type: 'campaign',
+                        duration: 'Ongoing',
+                        description: 'Speaking at conferences = instant authority. Get on stage, get noticed.',
+                        story: `
+                            <h4>Why This Matters:</h4>
+                            <p>Conference speakers are perceived as industry experts. One good talk reaches hundreds 
+                            of potential customers and generates months of content.</p>
+                            
+                            <h4>The Approach:</h4>
+                            <p>Apply to 10 events. Target: African fintech, banking, and tech conferences. 
+                            Focus on educational topics, not product pitches.</p>
+                            
+                            <h4>Speaking Topics:</h4>
+                            <ul>
+                                <li>"Rethinking Credit: How Alternative Data Opens Access"</li>
+                                <li>"Building the Inclusive Bank: Technology + Policy"</li>
+                                <li>"The African Fintech Stack: Where We Go From Here"</li>
+                                <li>"Default Patterns We\'re Seeing: What the Data Tells Us"</li>
+                            </ul>
+                        `,
+                        prompt: 'What speaking topic would position Akiba as a must-listen voice in African fintech?',
+                        quickOptions: [
+                            "Keynote: 'The $50B Opportunity: Lending to Africa's Invisible Majority'",
+                            "Panel: 'Balancing Financial Inclusion with Risk Management'",
+                            "Workshop: 'Build Your First Alternative Credit Model in 60 Minutes'",
+                            "Fireside: 'What 2 Years of SME Data Taught Us About African Credit'",
+                            "Lightning talk: '5 Credit Myths Killing Financial Inclusion'"
+                        ],
+                        successMetrics: '3-5 speaking slots, 500+ attendees reached, featured in 3 industry publications'
+                    },
+                    {
+                        id: 'data-insights',
+                        title: 'Data Story Content Engine',
+                        type: 'campaign',
+                        duration: 'Ongoing',
+                        description: 'Your unique data = unique insights. Share them to establish thought leadership.',
+                        story: `
+                            <h4>Why This Matters:</h4>
+                            <p>Akiba has data insights nobody else has. Sharing these insights positions you as 
+                            THE source of truth for SME credit in Africa.</p>
+                            
+                            <h4>The Approach:</h4>
+                            <p>Quarterly data reports analyzing trends you see across portfolios. Make it valuable 
+                            enough that people share it, cite it, and wait for the next one.</p>
+                            
+                            <h4>Data Stories:</h4>
+                            <ul>
+                                <li>"State of SME Credit in South Africa" (quarterly)</li>
+                                <li>"Default Patterns Across 10,000 Businesses"</li>
+                                <li>"How Transaction Behavior Predicts Credit Risk"</li>
+                                <li>"The Hidden Creditworthy: Who Traditional Systems Miss"</li>
+                            </ul>
+                        `,
+                        prompt: 'What data insight would be most valuable (and shareable) for your target market?',
+                        quickOptions: [
+                            "Monthly SME Credit Index - become the go-to benchmark for African SME lending",
+                            "Default prediction model - 'These 5 patterns predict 80% of defaults'",
+                            "Industry comparison: How credit risk varies by sector (retail vs agriculture vs services)",
+                            "The Inclusion Gap Report: Quantifying how many creditworthy SMEs are excluded",
+                            "Real-time Credit Sentiment Index: Is lending getting easier or harder?"
+                        ],
+                        successMetrics: '1 data report per quarter, 1,000+ downloads, cited by 3+ media outlets'
+                    }
+                ]
+            },
+            {
+                id: 'quick-wins',
+                name: 'Quick Wins',
+                icon: '⚡',
+                activities: [
+                    {
+                        id: 'website',
+                        title: 'Website Messaging Overhaul',
+                        type: 'tactical',
+                        duration: 'This Week',
+                        description: 'Transform technical, feature-focused messaging into problem-solution, outcome-focused copy.',
+                        story: `
+                            <h4>Current Gap:</h4>
+                            <p>Your website talks about what you do, not why it matters. It\'s technical when 
+                            it should be compelling.</p>
+                            
+                            <h4>The Fix:</h4>
+                            <p>Rewrite your homepage hero, value props, and CTAs to lead with customer problems 
+                            and outcomes, not features.</p>
+                            
+                            <h4>Example Transformation:</h4>
+                            <ul>
+                                <li><strong>Before:</strong> "Akiba Digital provides enterprise-grade data aggregation..."</li>
+                                <li><strong>After:</strong> "See credit risk others miss. Lend inclusively without increasing defaults."</li>
+                            </ul>
+                        `,
+                        prompt: 'Write a compelling homepage hero message (one sentence) that leads with customer pain, not product features.',
+                        quickOptions: [
+                            "See credit risk others miss. Lend to the 70% traditional scoring excludes.",
+                            "Turn transaction data into yes. Akiba reveals the creditworthy your competitors reject.",
+                            "Financial inclusion without the risk. Lend smarter using alternative data.",
+                            "Stop saying no to creditworthy businesses. Akiba shows you who to trust.",
+                            "Your next customer is invisible to credit bureaus. We help you see them."
+                        ],
+                        successMetrics: 'New messaging live, 20% increase in demo requests within 30 days'
+                    },
+                    {
+                        id: 'linkedin',
+                        title: 'LinkedIn Company Page Refresh',
+                        type: 'tactical',
+                        duration: 'This Week',
+                        description: 'Turn your dormant LinkedIn into an active thought leadership channel.',
+                        story: `
+                            <h4>Current Gap:</h4>
+                            <p>Sporadic posts, low engagement, no clear voice.</p>
+                            
+                            <h4>The Fix:</h4>
+                            <p>Commit to 3x per week. Mix: Customer stories (40%) + Industry insights (30%) + 
+                            Product updates (30%). Engage with EVERY comment within 4 hours.</p>
+                            
+                            <h4>Content Calendar:</h4>
+                            <ul>
+                                <li>Monday: Industry insight or data point</li>
+                                <li>Wednesday: Customer success story</li>
+                                <li>Friday: Product update or behind-the-scenes</li>
+                            </ul>
+                        `,
+                        prompt: 'What's a compelling LinkedIn post idea that showcases Akiba's value without being salesy?',
+                        quickOptions: [
+                            "Share a graph: 'This Week in SME Credit' - weekly data snapshot that people look forward to",
+                            "Customer spotlight: 'How [Company] approved 40% more loans without increasing risk'",
+                            "Behind-the-scenes: 'Our data team just discovered something surprising about seasonal defaults...'",
+                            "Hot take: 'Unpopular opinion: Credit scores hurt more businesses than they help. Here's why...'",
+                            "Friday tradition: 'SME Success Story' - celebrating businesses that got funded this week"
+                        ],
+                        successMetrics: '3 posts per week, 500+ impressions per post, 50+ new followers per month'
+                    },
+                    {
+                        id: 'sales-collateral',
+                        title: 'Sales Collateral Creation',
+                        type: 'tactical',
+                        duration: 'This Week',
+                        description: 'Give your sales team professional, compelling materials that close deals.',
+                        story: `
+                            <h4>What You Need:</h4>
+                            <ul>
+                                <li>One-pager: Problem-Solution-Proof format</li>
+                                <li>Pitch deck: 10 slides maximum, story-driven</li>
+                                <li>ROI calculator: Shows value in customer\'s terms</li>
+                                <li>Demo video: 3-minute product walkthrough</li>
+                            </ul>
+                            
+                            <h4>The Difference:</h4>
+                            <p>Current materials are feature lists. New materials tell stories, show outcomes, 
+                            and make the value impossible to ignore.</p>
+                        `,
+                        prompt: 'What's the most compelling proof point to include in sales materials?',
+                        quickOptions: [
+                            "ROI calculator: 'See how much revenue you're leaving on the table by rejecting creditworthy applicants'",
+                            "Before/After: 'Traditional scoring vs Akiba scoring - same portfolio, different outcomes'",
+                            "Time-to-yes: 'From 3 days to 3 hours: How Akiba accelerates lending decisions'",
+                            "Risk-adjusted returns: 'Lend 40% more while maintaining your target default rate'",
+                            "Inclusion score: 'Your current approval rate vs what it could be with alternative data'"
+                        ],
+                        successMetrics: 'All 4 assets created, used in 100% of sales conversations, 30% higher win rate'
+                    }
+                ]
+            },
+            {
+                id: 'measurement',
+                name: 'Measurement',
+                icon: '📊',
+                activities: [
+                    {
+                        id: 'metrics',
+                        title: 'Brand Health Metrics Framework',
+                        type: 'framework',
+                        duration: 'Ongoing',
+                        description: 'Track what matters: from awareness to advocacy.',
+                        story: `
+                            <h4>Why Measurement Matters:</h4>
+                            <p>You can\'t improve what you don\'t measure. These metrics tell you if your brand 
+                            building is working.</p>
+                            
+                            <h4>The Framework:</h4>
+                            <ul>
+                                <li><strong>Awareness:</strong> Are people hearing about Akiba?</li>
+                                <li><strong>Consideration:</strong> Are they interested?</li>
+                                <li><strong>Conversion:</strong> Are they buying?</li>
+                                <li><strong>Advocacy:</strong> Are they telling others?</li>
+                            </ul>
+                            
+                            <h4>Track Monthly:</h4>
+                            <p>Set up a simple dashboard. Review with the team monthly. Adjust tactics based 
+                            on what\'s working.</p>
+                        `,
+                        prompt: 'Which metric would be most valuable to track for Akiba's brand success?',
+                        quickOptions: [
+                            "Brand search volume: How many people search 'Akiba Digital' each month?",
+                            "Share of voice: What % of alternative credit conversations mention Akiba?",
+                            "Demo-to-close rate: Are better-qualified leads coming from brand efforts?",
+                            "Customer acquisition cost: Is brand reducing CAC by generating inbound?",
+                            "Net Promoter Score: Would customers recommend Akiba to peers?"
+                        ],
+                        successMetrics: 'Dashboard live, monthly review meetings scheduled, metrics showing improvement'
+                    }
+                ]
+            },
+            {
+                id: 'summary',
+                name: 'Summary & Export',
+                icon: '✅',
+                activities: [
+                    {
+                        id: 'export',
+                        title: 'Your Brand Strategy',
+                        type: 'export',
+                        duration: '5 min',
+                        description: 'Review your work and export your complete brand strategy.',
+                        story: `
+                            <h4>🎉 Congratulations!</h4>
+                            <p>You\'ve completed the Akiba Digital Brand Workshop. You now have:</p>
+                            <ul>
+                                <li>✅ A compelling brand story and clear positioning</li>
+                                <li>✅ Defined values and voice guidelines</li>
+                                <li>✅ Visual identity direction</li>
+                                <li>✅ 6 activation campaigns ready to execute</li>
+                                <li>✅ Quick wins you can implement this week</li>
+                                <li>✅ A measurement framework to track success</li>
+                            </ul>
+                            
+                            <h4>Next Steps:</h4>
+                            <ol>
+                                <li>Export your results (button below)</li>
+                                <li>Review top-voted ideas with leadership</li>
+                                <li>Assign owners to each activation campaign</li>
+                                <li>Start with Quick Wins this week</li>
+                                <li>Launch first activation campaign within 2 weeks</li>
+                            </ol>
+                            
+                            <h4>Remember:</h4>
+                            <p>A brand isn\'t built in a day, but it starts with clarity. You now have that clarity. 
+                            The difference between Akiba today and Akiba as a recognized leader is execution.</p>
+                            
+                            <p style="margin-top: 20px;"><strong>Let\'s build a brand that gets Akiba Digital noticed! 🚀</strong></p>
+                        `
+                    }
+                ]
+            }
+        ];
+
+        // Initialize workshop data structure
+        function initializeWorkshopData() {
+            workshopPhases.forEach(phase => {
+                phase.activities.forEach(activity => {
+                    if (activity.type === 'exercise' || activity.type === 'campaign' || activity.type === 'tactical') {
+                        appState.workshopData[activity.id] = {
+                            ideas: [],
+                            completed: false
+                        };
+                    }
+                });
+            });
+        }
+
+        // Start Workshop
+        function startWorkshop() {
+            const nameInput = document.getElementById('userName');
+            const name = nameInput.value.trim();
+            
+            if (!name) {
+                nameInput.focus();
+                return;
+            }
+            
+            appState.userName = name;
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('mainApp').classList.add('active');
+            document.getElementById('welcomeText').textContent = `Welcome, ${name}! 👋`;
+            
+            initializeWorkshopData();
+            renderPhaseNav();
+            loadActivity(0, 0);
+        }
+
+        // Render Phase Navigation
+        function renderPhaseNav() {
+            const phaseNav = document.getElementById('phaseNav');
+            phaseNav.innerHTML = workshopPhases.map((phase, index) => {
+                const isActive = index === appState.currentPhase;
+                const isCompleted = index < appState.currentPhase;
+                return `
+                    <button 
+                        class="phase-tab ${isActive ? \'active\' : \'\'} ${isCompleted ? \'completed\' : \'\'}"
+                        onclick="jumpToPhase(${index})"
+                    >
+                        <span>${phase.icon}</span>
+                        <span>${phase.name}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Load Activity
+        function loadActivity(phaseIndex, activityIndex) {
+            appState.currentPhase = phaseIndex;
+            appState.currentActivity = activityIndex;
+            
+            const phase = workshopPhases[phaseIndex];
+            const activity = phase.activities[activityIndex];
+            
+            renderPhaseNav();
+            renderActivity(activity);
+            updateProgress();
+            updateNavButtons();
+            window.scrollTo(0, 0);
+        }
+
+        // Render Activity
+        function renderActivity(activity) {
+            const contentArea = document.getElementById('contentArea');
+            let html = '';
+            
+            // Story Section
+            if (activity.type === 'story' || activity.story) {
+                html += `
+                    <div class="story-section">
+                        <div class="story-header">
+                            <div class="story-icon">${activity.type === \'export\' ? \'✅\' : \'📖\'}</div>
+                            <div>
+                                <h2 class="story-title">${activity.title}</h2>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            ${activity.content?.story || activity.story || \'\'}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Exercise/Campaign/Tactical Activity
+            if (['exercise', 'campaign', 'tactical'].includes(activity.type)) {
+                const activityData = appState.workshopData[activity.id] || { ideas: [], completed: false };
+                const status = activityData.completed ? 'completed' : (activityData.ideas.length > 0 ? 'in-progress' : 'not-started');
+                
+                html += `
+                    <div class="activity-section">
+                        <div class="activity-header">
+                            <div class="activity-meta">
+                                <h2 class="activity-title">${activity.title}</h2>
+                                <p style="color: var(--akiba-gray); margin: 8px 0 12px 0;">${activity.description}</p>
+                                <div class="activity-timing">
+                                    <div class="timing-badge">
+                                        ⏱️ ${activity.duration}
+                                    </div>
+                                    ${activity.type === \'campaign\' ? \'<div class="timing-badge">🚀 Campaign</div>\' : \'\'}
+                                    ${activity.type === \'tactical\' ? \'<div class="timing-badge">⚡ Quick Win</div>\' : \'\'}
+                                </div>
+                            </div>
+                            <div class="activity-status">
+                                <div class="status-badge ${status}">
+                                    ${status === \'completed\' ? \'✅ Completed\' : status === \'in-progress\' ? \'🔄 In Progress\' : \'○ Not Started\'}
+                                </div>
+                            </div>
+                        </div>
+                `;
+                
+                // Exercises
+                if (activity.exercises) {
+                    activity.exercises.forEach(exercise => {
+                        html += `
+                            <div class="exercise-card">
+                                <div class="exercise-header">
+                                    <h3 class="exercise-title">${exercise.name}</h3>
+                                    <div class="exercise-time">${exercise.time}</div>
+                                </div>
+                                <div class="exercise-steps">
+                                    <h5>Steps:</h5>
+                                    <ol>
+                                        ${exercise.steps.map(step => `<li>${step}</li>`).join(\'\')}
+                                    </ol>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                // Input Section
+                html += `
+                    <div class="input-section">
+                        <div class="input-header">💡 ${activity.prompt}</div>
+                `;
+                
+                if (activity.quickOptions) {
+                    html += `
+                        <div class="quick-options">
+                            <select class="quick-select" id="quickSelect_${activity.id}" onchange="useQuickOption(\'${activity.id}\')">
+                                <option value="">Select a starter idea...</option>
+                                ${activity.quickOptions.map((opt, i) => `<option value="${i}">${opt}</option>`).join(\'\')}
+                            </select>
+                        </div>
+                    `;
+                }
+                
+                html += `
+                        <textarea 
+                            id="ideaInput_${activity.id}" 
+                            class="idea-textarea" 
+                            placeholder="Write your idea here..."
+                        ></textarea>
+                        <button class="btn-add" onclick="addIdea(\'${activity.id}\')">
+                            + Add Idea
+                        </button>
+                        <button class="btn-complete" onclick="markComplete(\'${activity.id}\')">
+                            ✅ Mark Complete
+                        </button>
+                    </div>
+                `;
+                
+                // Ideas Display
+                if (activityData.ideas.length > 0) {
+                    const sortedIdeas = [...activityData.ideas].sort((a, b) => b.votes - a.votes);
+                    html += `
+                        <div class="ideas-display">
+                            <div class="ideas-header">💬 Team Ideas (${sortedIdeas.length})</div>
+                            ${sortedIdeas.map(idea => `
+                                <div class="idea-card">
+                                    <div class="idea-content-display">
+                                        <div class="vote-section">
+                                            <button class="vote-btn" onclick="voteIdea('${activity.id}', ${idea.id})">👍</button>
+                                            <div class="vote-count">${idea.votes}</div>
+                                        </div>
+                                        <div class="idea-text-display">
+                                            <p class="idea-text">${escapeHtml(idea.text)}</p>
+                                            <div class="idea-meta">
+                                                <span class="author">👤 ${escapeHtml(idea.author)}</span>
+                                                <span style="color: var(--akiba-gray);">${idea.timestamp}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join(\'\')}
+                        </div>
+                    `;
+                }
+                
+                // Success Metrics
+                if (activity.successMetrics) {
+                    html += `
+                        <div class="success-metrics">
+                            <h4>🎯 Success Metrics:</h4>
+                            <div class="metric-item">${activity.successMetrics}</div>
+                        </div>
+                    `;
+                }
+                
+                html += `</div>`;
+            }
+            
+            // Export Activity
+            if (activity.type === 'export') {
+                html += `
+                    <div class="export-panel">
+                        <div class="export-title">📥 Export Your Brand Strategy</div>
+                        <p class="export-description">
+                            Download all your workshop results, ideas, and top-voted concepts 
+                            in a single JSON file for documentation and implementation.
+                        </p>
+                        <button class="btn-export" onclick="exportData()">
+                            Download Complete Strategy
+                        </button>
+                    </div>
+                `;
+            }
+            
+            contentArea.innerHTML = html;
+        }
+
+        // Use Quick Option
+        function useQuickOption(activityId) {
+            const select = document.getElementById(`quickSelect_${activityId}`);
+            const textarea = document.getElementById(`ideaInput_${activityId}`);
+            const activity = findActivity(activityId);
+            
+            if (select.value && activity) {
+                textarea.value = activity.quickOptions[parseInt(select.value)];
+                select.value = '';
+                textarea.focus();
+            }
+        }
+
+        // Find Activity
+        function findActivity(activityId) {
+            for (let phase of workshopPhases) {
+                const activity = phase.activities.find(a => a.id === activityId);
+                if (activity) return activity;
+            }
+            return null;
+        }
+
+        // Add Idea
+        function addIdea(activityId) {
+            const textarea = document.getElementById(`ideaInput_${activityId}`);
+            const text = textarea.value.trim();
+            
+            if (!text) {
+                textarea.focus();
+                return;
+            }
+            
+            const idea = {
+                id: Date.now(),
+                text: text,
+                author: appState.userName,
+                votes: 0,
+                timestamp: new Date().toLocaleTimeString()
+            };
+            
+            if (!appState.workshopData[activityId]) {
+                appState.workshopData[activityId] = { ideas: [], completed: false };
+            }
+            
+            appState.workshopData[activityId].ideas.push(idea);
+            textarea.value = '';
+            
+            const activity = findActivity(activityId);
+            renderActivity(activity);
+            updateProgress();
+        }
+
+        // Vote Idea
+        function voteIdea(activityId, ideaId) {
+            const activityData = appState.workshopData[activityId];
+            const idea = activityData.ideas.find(i => i.id === ideaId);
+            if (idea) {
+                idea.votes++;
+                const activity = findActivity(activityId);
+                renderActivity(activity);
+            }
+        }
+
+        // Mark Complete
+        function markComplete(activityId) {
+            if (!appState.workshopData[activityId]) {
+                appState.workshopData[activityId] = { ideas: [], completed: false };
+            }
+            appState.workshopData[activityId].completed = true;
+            appState.completedActivities.add(activityId);
+            
+            const activity = findActivity(activityId);
+            renderActivity(activity);
+            updateProgress();
+        }
+
+        // Update Progress
+        function updateProgress() {
+            const totalActivities = workshopPhases.reduce((sum, phase) => 
+                sum + phase.activities.filter(a => ['exercise', 'campaign', 'tactical'].includes(a.type)).length, 0);
+            const completed = appState.completedActivities.size;
+            const totalIdeas = Object.values(appState.workshopData).reduce((sum, data) => sum + (data.ideas?.length || 0), 0);
+            
+            const progress = Math.round((completed / totalActivities) * 100);
+            
+            document.getElementById('totalIdeas').textContent = totalIdeas;
+            document.getElementById('completedActivities').textContent = completed;
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressText').textContent = `${completed} of ${totalActivities} activities`;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // Navigation
+        function navigateNext() {
+            const phase = workshopPhases[appState.currentPhase];
+            if (appState.currentActivity < phase.activities.length - 1) {
+                loadActivity(appState.currentPhase, appState.currentActivity + 1);
+            } else if (appState.currentPhase < workshopPhases.length - 1) {
+                loadActivity(appState.currentPhase + 1, 0);
+            }
+        }
+
+        function navigatePrev() {
+            if (appState.currentActivity > 0) {
+                loadActivity(appState.currentPhase, appState.currentActivity - 1);
+            } else if (appState.currentPhase > 0) {
+                const prevPhase = workshopPhases[appState.currentPhase - 1];
+                loadActivity(appState.currentPhase - 1, prevPhase.activities.length - 1);
+            }
+        }
+
+        function jumpToPhase(phaseIndex) {
+            loadActivity(phaseIndex, 0);
+        }
+
+        function updateNavButtons() {
+            const btnPrev = document.getElementById('btnPrev');
+            const btnNext = document.getElementById('btnNext');
+            
+            btnPrev.disabled = appState.currentPhase === 0 && appState.currentActivity === 0;
+            
+            const phase = workshopPhases[appState.currentPhase];
+            const isLastActivity = appState.currentActivity === phase.activities.length - 1;
+            const isLastPhase = appState.currentPhase === workshopPhases.length - 1;
+            btnNext.disabled = isLastActivity && isLastPhase;
+        }
+
+        // Export Data
+        function exportData() {
+            const exportData = {
+                participant: appState.userName,
+                completedAt: new Date().toISOString(),
+                progress: {
+                    completed: appState.completedActivities.size,
+                    totalIdeas: Object.values(appState.workshopData).reduce((sum, data) => sum + (data.ideas?.length || 0), 0)
+                },
+                workshopResults: appState.workshopData
+            };
+            
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `akiba-brand-strategy-${appState.userName}-${new Date().toISOString().split(\'T\')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            
+            alert('✅ Your brand strategy has been exported successfully!');
+        }
+
+        // Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

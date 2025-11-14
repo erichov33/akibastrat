@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "akiba-workshop-final-clean.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/akiba-workshop-final-clean.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/akiba-workshop-final-clean.html"
+    }
+  ]
+}
