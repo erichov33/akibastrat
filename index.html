@@ -1602,19 +1602,18 @@
         // Render Phase Navigation
         function renderPhaseNav() {
             const phaseNav = document.getElementById('phaseNav');
-            phaseNav.innerHTML = workshopPhases.map((phase, index) => {
+            const tabs = workshopPhases.map(function(phase, index) {
                 const isActive = index === appState.currentPhase;
                 const isCompleted = index < appState.currentPhase;
-                return `
-                    <button 
-                        class="phase-tab ${isActive ? \'active\' : \'\'} ${isCompleted ? \'completed\' : \'\'}"
-                        onclick="jumpToPhase(${index})"
-                    >
-                        <span>${phase.icon}</span>
-                        <span>${phase.name}</span>
-                    </button>
-                `;
-            }).join('');
+                return (
+                    '<button class="phase-tab ' + (isActive ? 'active' : '') + ' ' + (isCompleted ? 'completed' : '') + '" ' +
+                    'onclick="jumpToPhase(' + index + ')">' +
+                    '<span>' + phase.icon + '</span>' +
+                    '<span>' + phase.name + '</span>' +
+                    '</button>'
+                );
+            });
+            phaseNav.innerHTML = tabs.join('');
         }
 
         // Load Activity
@@ -1642,7 +1641,7 @@
                 html += `
                     <div class="story-section">
                         <div class="story-header">
-                            <div class="story-icon">${activity.type === \'export\' ? \'✅\' : \'📖\'}</div>
+                            <div class="story-icon">${activity.type === 'export' ? '&#x2705;' : '&#x1F4D6;'}</div>
                             <div>
                                 <h2 class="story-title">${activity.title}</h2>
                             </div>
@@ -1669,13 +1668,13 @@
                                     <div class="timing-badge">
                                         ⏱️ ${activity.duration}
                                     </div>
-                                    ${activity.type === \'campaign\' ? \'<div class="timing-badge">🚀 Campaign</div>\' : \'\'}
-                                    ${activity.type === \'tactical\' ? \'<div class="timing-badge">⚡ Quick Win</div>\' : \'\'}
+                                    ${activity.type === 'campaign' ? '<div class="timing-badge">&#x1F680; Campaign</div>' : ''}
+                                    ${activity.type === 'tactical' ? '<div class="timing-badge">&#x26A1; Quick Win</div>' : ''}
                                 </div>
                             </div>
                             <div class="activity-status">
                                 <div class="status-badge ${status}">
-                                    ${status === \'completed\' ? \'✅ Completed\' : status === \'in-progress\' ? \'🔄 In Progress\' : \'○ Not Started\'}
+                                    ${status === 'completed' ? '&#x2705; Completed' : status === 'in-progress' ? '&#x1F501; In Progress' : '&#x25CB; Not Started'}
                                 </div>
                             </div>
                         </div>
@@ -1693,7 +1692,7 @@
                                 <div class="exercise-steps">
                                     <h5>Steps:</h5>
                                     <ol>
-                                        ${exercise.steps.map(step => `<li>${step}</li>`).join(\'\')}
+                                        ${exercise.steps.map(function(step){ return '<li>' + step + '</li>'; }).join('')}
                                     </ol>
                                 </div>
                             </div>
@@ -1712,7 +1711,7 @@
                         <div class="quick-options">
                             <select class="quick-select" id="quickSelect_${activity.id}" onchange="useQuickOption(\'${activity.id}\')">
                                 <option value="">Select a starter idea...</option>
-                                ${activity.quickOptions.map((opt, i) => `<option value="${i}">${opt}</option>`).join(\'\')}
+                                ${activity.quickOptions.map(function(opt, i){ return '<option value="' + i + '">' + opt + '</option>'; }).join('')}
                             </select>
                         </div>
                     `;
@@ -1727,8 +1726,8 @@
                         <button class="btn-add" onclick="addIdea(\'${activity.id}\')">
                             + Add Idea
                         </button>
-                        <button class="btn-complete" onclick="markComplete(\'${activity.id}\')">
-                            ✅ Mark Complete
+                        <button class="btn-complete" onclick="markComplete('${activity.id}')">
+                            &#x2705; Mark Complete
                         </button>
                     </div>
                 `;
@@ -1743,7 +1742,7 @@
                                 <div class="idea-card">
                                     <div class="idea-content-display">
                                         <div class="vote-section">
-                                            <button class="vote-btn" onclick="voteIdea('${activity.id}', ${idea.id})">👍</button>
+                                            <button class="vote-btn" onclick="voteIdea('${activity.id}', ${idea.id})">&#x1F44D;</button>
                                             <div class="vote-count">${idea.votes}</div>
                                         </div>
                                         <div class="idea-text-display">
@@ -1755,7 +1754,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            `).join(\'\')}
+                            `).join('')}
                         </div>
                     `;
                 }
@@ -1764,7 +1763,7 @@
                 if (activity.successMetrics) {
                     html += `
                         <div class="success-metrics">
-                            <h4>🎯 Success Metrics:</h4>
+                            <h4>&#x1F3AF; Success Metrics:</h4>
                             <div class="metric-item">${activity.successMetrics}</div>
                         </div>
                     `;
@@ -1936,11 +1935,11 @@
             const url = URL.createObjectURL(dataBlob);
             const link = document.createElement('a');
             link.href = url;
-            link.download = `akiba-brand-strategy-${appState.userName}-${new Date().toISOString().split(\'T\')[0]}.json`;
+            link.download = 'akiba-brand-strategy-' + appState.userName + '-' + new Date().toISOString().split('T')[0] + '.json';
             link.click();
             URL.revokeObjectURL(url);
             
-            alert('✅ Your brand strategy has been exported successfully!');
+            alert('Your brand strategy has been exported successfully!');
         }
 
         // Escape HTML
